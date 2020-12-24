@@ -1,5 +1,5 @@
 # Logs
-webapp/acess.log
+webapp/access.log
 
 # Optional npm cache directory
 webapp/.npm
