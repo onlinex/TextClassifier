@@ -1,5 +1,5 @@
 from flask import Flask, request, make_response, jsonify
-
+from model import transformer
 
 # define Flask backend
 app = Flask(__name__)
@@ -9,7 +9,8 @@ app = Flask(__name__)
 def x():
     json = request.get_json()
 
-    json['text']
+    # run
+    out = transformer.run(json['text'])
 
     # form json response
     return make_response(jsonify({
