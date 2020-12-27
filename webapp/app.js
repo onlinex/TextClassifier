@@ -9,8 +9,11 @@ const path = require('path');
 const cors = require('cors');
 // connect env file
 const dotenv = require('dotenv');
-// data parser
+// data parser (enabling to send json)
 const bodyParser = require('body-parser');
+// promise based http client
+const axios = require('axios');
+const { response } = require('express');
 
 
 // config env variables
@@ -38,14 +41,24 @@ app.listen(PORT, () => {
     console.log(`App is listening port ${PORT}`)
 });
 
+const URL = "http://127.0.0.1:8000";
+
 // serve post request
 app.post('/query', async (req, res) => {
     try {
+        // get json
         const json = req.body;
-
-        console.log(json);
-
-        res.status(200).send();
+        // form request to the model
+        axios.post(URL, json).then(response => {
+            //console.log(response.data)
+            // send response back to the client
+            res.status(200).send({
+                "name": "Elon Musk",
+                "confidence": response.data['confidence']
+            });
+        }).catch(error => {
+            res.status(503).send(error);
+        });
 
     } catch(error) {
         console.log(error);
