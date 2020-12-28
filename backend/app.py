@@ -4,18 +4,20 @@ from model import transformer
 # define Flask backend
 app = Flask(__name__)
 
+model = transformer.Model()
+
 # handle incoming requests
 @app.route('/', methods=['POST'])
 def x():
     json = request.get_json()
 
     # run
-    out = transformer.run(json['text'])
+    author, authorID, confidence = model.run(json['text'])
 
     # form json response
     return make_response(jsonify({
-        "name": '...',
-        "confidence": 0.81
+        "name": str(author),
+        "confidence": str(confidence)
     }), 200)
 
 if __name__ == '__main__':

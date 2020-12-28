@@ -50,10 +50,9 @@ app.post('/query', async (req, res) => {
         const json = req.body;
         // form request to the model
         axios.post(URL, json).then(response => {
-            //console.log(response.data)
             // send response back to the client
             res.status(200).send({
-                "name": "Elon Musk",
+                "name": response.data['name'],
                 "confidence": response.data['confidence']
             });
         }).catch(error => {

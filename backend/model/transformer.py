@@ -1,22 +1,43 @@
 import numpy as np
+import pandas as pd
+import pickle
+import os
 
-# clean text
-def preprocess(text: str):
-    # ...
-    return ["", "", ""]
+# supress all tensorflow warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-# convert sentences to vector space
-def vectorize(arr: list):
-    # ...
-    return 0
+# tensorflow
+import tensorflow as tf
+from tensorflow.keras import backend as K
+from tensorflow.keras.models import load_model
 
-# run model
-def model(vec):
-    # ...
-    argmax = 0
-    confidence = 0.0
+# load embeddings
+def load_vectorizer(path):
+    with open(path, 'rb') as file:
+        return pickle.load(file)
 
-    return argmax, confidence
+class Model:
+    def __init__(self):
+        self.veczr = load_vectorizer('./data/vectorizer.pkl')
+        self.model = load_model('./data/nn.h5')
+        #
+        self.authors = pd.read_csv('./data/Authors.csv', index_col='ID')
 
-def run(text: str):
-    return model(vectorize(preprocess(text)))
+    # convert text to sparse matrices
+    def vectorize(self, arr: list):
+        return self.veczr.transform(arr)
+
+    # predict labels
+    def predict(self, vec):
+        return self.model.predict(vec)
+
+    def run(self, text: str):
+        prediction = self.predict(self.vectorize(text.split('.')))
+        # get mean of all sentences
+        prediction = np.mean(prediction, axis=0)
+        #
+        label, confidence = np.argmax(prediction), np.max(prediction)
+        # retrieve name from the label
+        author = self.authors.loc[label]['Author']
+
+        return author, label, np.round(confidence, 2)
