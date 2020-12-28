@@ -10,5 +10,5 @@ webapp/.env
 # version control
 webapp/package-lock.json
 
-# python cache
+# python cache in all subfolders
 **__pycache__/
