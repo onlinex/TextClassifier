@@ -1,4 +1,6 @@
-$("#send_text").on("click", function() {
+$("#text").on("input", function() {
+
+    $('#loading_animation').removeClass('d-none');
 
     // get request value
     let text = $("#text").val()
@@ -28,5 +30,7 @@ $("#send_text").on("click", function() {
 
     }).catch(error => {
         console.log(error)
+    }).finally(() => {
+        $('#loading_animation').addClass('d-none')
     });
-});
+})

@@ -7,6 +7,10 @@
 
         <link rel="shortcut icon" href="#">
 
+        <!-- activate google fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
 
@@ -14,11 +18,55 @@
     </head>
 
     <body>
-        
-    <textarea id='text'></textarea> <!-- type request here -->
-    <button id='send_text' class='btn btn-primary'>Send</button>
-    <p id='response'></p> <!-- see response here -->
 
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Typograph</h1>
+                <p>
+                    I do this and this
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row shadow p-5 ml-1 mr-1" style="background-color: var(--color-4);">
+                    <!-- type request here -->
+                    <textarea class="" id="text" rows="7" placeholder=" Type anything..." autofocus></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row shadow p-5 ml-1 mr-1 h-100" style="background-color: var(--color-2);">
+                    <div class="col m-0 p-0">
+                        <h4 id="response" class="">
+                            William Shakespeare 
+                        </h4>
+                        <p>
+                            some description goes here
+                        </p>
+
+                        <div class="row justify-content-center d-none" id="loading_animation">
+                            <div class="book">
+                                <div class="inner">
+                                    <div class="left"></div>
+                                    <div class="middle"></div>
+                                    <div class="right"></div>
+                                </div>
+                                <ul>
+                                    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                                    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
