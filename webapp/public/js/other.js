@@ -116,7 +116,7 @@ function setNumbers(val) {
         var perc = parseInt(val, 10);
 
         $({p:0}).animate({p:perc}, {
-        duration: 3000,
+        duration: 2200,
         easing: "swing",
         step: function(p) {
             $bar.css({

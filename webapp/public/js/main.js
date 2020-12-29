@@ -84,7 +84,10 @@ function request(data) {
         console.log(json) // debug information
         // set author's name
         $("#response").text(json['name']);
-        setNumbers(parseFloat(json['confidence']) * 100)
+        // set confidence level
+        setTimeout(() => {
+            setNumbers(parseFloat(json['confidence']) * 100)
+        }, 800)
 
 
     }).catch(error => {
