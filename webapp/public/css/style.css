@@ -65,24 +65,40 @@ canvas {
   z-index: -1;
 }
 
-/* 
+/* Progress bar style */
 
-body {
-	background: linear-gradient(-45deg, var(--color-1), var(--color-2), var(--color-3), var(--color-4));
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+.progress{
+  position: relative;
+  background: none;
+  height: 100%;
+  float:left;
+  z-index: 20;
+  text-align: center;
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+.barOverflow{ /* Wraps the rotating .bar */
+  position: relative;
+  width: 80px; height: 40px; /* Half circle (overflow) */
+  margin-bottom: 5px; /* bring the numbers up */
+  overflow: hidden;
+}
+
+.bar{
+  position: absolute;
+  top: 0; left: 0;
+  width: 80px; height: 80px; /* full circle! */
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 10px solid #ccc;     /* half gray, */
+  border-bottom-color: var(--color-4);  /* half azure */
+  border-right-color: var(--color-4);
+}
+
+.progress > span {
+  position: absolute;
+  width: 100%;
+  top: 25px;
+  font-weight: bold;
 }
 
 /* */
