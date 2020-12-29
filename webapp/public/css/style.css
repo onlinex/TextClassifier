@@ -46,6 +46,8 @@ textarea::-webkit-scrollbar-thumb {
 
 /* */
 
+/* */
+
 .book {
     --color: var(--color-4);
     --duration: 6.8s;
