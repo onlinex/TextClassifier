@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import os
 
-# supress all tensorflow warnings
+# suppress all tensorflow warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # tensorflow

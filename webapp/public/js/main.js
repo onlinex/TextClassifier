@@ -1,21 +1,27 @@
 let AnimHandler = class {
     constructor() {
-        this.book = $('#loading_animation')
-        this.book.fadeOut(0); // fadout by default
-        this.timeBlock = NaN
+        this.book = $('#loading_animation');
+        this.info = $('#author_info');
+        //this.book.fadeOut(0); // fadout by default
+        this.info.fadeOut(0);
+        this.timeBlock = NaN;
     }
 
     fadeIn() {
         // clear fadeout
         clearTimeout(this.timeBlock);
         //
-        this.book.fadeIn();
+        this.info.fadeOut(85).next().delay(85);
+        
+        this.book.fadeIn(50);
     }
 
     fadeOut() {
         // timeout can be reverted by fadeIN
         this.timeBlock = setTimeout(() => {
-            this.book.fadeOut();
+            this.book.fadeOut(120, () => {
+                this.info.fadeIn(50);
+            });
         }, 800)
     }
 }
@@ -36,7 +42,7 @@ let Network = class {
                 // make request
                 request(json)
             }
-        }, 500);
+        }, 250);
     }
 
     add(json) {
@@ -57,7 +63,7 @@ $("#text").on("input", function() {
     network.add(json);
 });
 
-function request(json) {
+function request(data) {
     animation_handler.fadeIn();
     // fetch request
     fetch("/query", {
@@ -65,7 +71,7 @@ function request(json) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: json
+        body: data
     }).then(response => {
         // check for errors
         if(response.ok) {
@@ -82,6 +88,9 @@ function request(json) {
     }).catch(error => {
         console.log(error)
     }).finally(() => {
-        animation_handler.fadeOut();
+        // fade unless there is nothing to print
+        if(JSON.parse(data)['text'] !== '') {
+            animation_handler.fadeOut();
+        }
     });
 }
