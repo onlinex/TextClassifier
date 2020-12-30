@@ -10,6 +10,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 from tensorflow.keras import backend as K
 from tensorflow.keras.models import load_model
+#
+from scipy.sparse import csr_matrix
 
 # load embeddings
 def load_vectorizer(path):
@@ -25,7 +27,7 @@ class Model:
 
     # convert text to sparse matrices
     def vectorize(self, arr: list):
-        return self.veczr.transform(arr)
+        return csr_matrix.sorted_indices(self.veczr.transform(arr))
 
     # predict labels
     def predict(self, vec):
