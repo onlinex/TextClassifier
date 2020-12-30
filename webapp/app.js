@@ -52,7 +52,8 @@ app.post('/query', async (req, res) => {
             // send response back to the client
             res.status(200).send({
                 "name": response.data['name'],
-                "confidence": response.data['confidence']
+                "confidence": response.data['confidence'],
+                "img_src": response.data['img_src']
             });
         }).catch(error => {
             res.status(503).send(error);

@@ -1,4 +1,9 @@
-ID,Author
-0,William Shakespeare
-1,Ernest Hemingway
-2,Charles Dickens
+ID,Author,Img
+0,William Shakespeare,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/800px-Shakespeare.jpg
+1,Ernest Hemingway,https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ErnestHemingway.jpg/800px-ErnestHemingway.jpg
+2,Charles Dickens,https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dickens_Gurney_head.jpg/800px-Dickens_Gurney_head.jpg
+3,Mark Twain,https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg
+4,J. K. Rowling,https://www.gstatic.com/tv/thumb/persons/174909/174909_v9_bb.jpg
+5,Agatha Christie,https://thumbs-prod.si-cdn.com/GoNIloXDnA08KUmEWwq6rO3m1dA=/fit-in/1600x0/https://public-media.si-cdn.com/filer/d9/0b/d90bf364-82dd-468d-be3b-db61879d27be/agatha.png
+6,George Orwell,https://upload.wikimedia.org/wikipedia/commons/7/7e/George_Orwell_press_photo.jpg
+7,Isaac Asimov,https://upload.wikimedia.org/wikipedia/commons/3/34/Isaac.Asimov01.jpg

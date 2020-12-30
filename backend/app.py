@@ -12,12 +12,13 @@ def x():
     json = request.get_json()
 
     # run
-    author, authorID, confidence = model.run(json['text'])
+    author, confidence, img = model.run(json['text'])
 
     # form json response
     return make_response(jsonify({
         "name": str(author),
-        "confidence": str(confidence)
+        "confidence": str(confidence),
+        "img_src": str(img)
     }), 200)
 
 if __name__ == '__main__':

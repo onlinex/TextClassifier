@@ -88,6 +88,8 @@ function request(data) {
         setTimeout(() => {
             setNumbers(parseFloat(json['confidence']) * 100)
         }, 800)
+        // set image
+        $("#thumbnail").attr("src", json['img_src']);
 
 
     }).catch(error => {

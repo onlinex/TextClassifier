@@ -39,5 +39,6 @@ class Model:
         label, confidence = np.argmax(prediction), np.max(prediction)
         # retrieve name from the label
         author = self.authors.loc[label]['Author']
+        img = self.authors.loc[label]['Img']
 
-        return author, label, np.round(confidence, 2)
+        return author, np.round(confidence, 2), img

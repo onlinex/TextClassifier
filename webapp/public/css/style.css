@@ -46,9 +46,9 @@ textarea::-webkit-scrollbar-thumb {
 
 /* Thumbnail */
 
-.thumbnail {
-  width: 142px; height: 142px;
-  object-fit: contain;
+#thumbnail {
+  width: 142px; height: 152px;
+  object-fit: cover;
 }
 
 
