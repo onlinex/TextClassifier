@@ -13,6 +13,9 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 // promise based http client
 const axios = require('axios');
+// http and https
+const http = require('http');
+const https = require('https');
 
 
 // config env variables
@@ -34,13 +37,18 @@ app.use(morgan('common', {
 }));
 
 // get an environment variable
-const PORT = process.env.PORT || 3000;
-// start server
-app.listen(PORT, () => {
-    console.log(`App is listening port ${PORT}`)
+const PORT = process.env.PORT || 8081;
+// create httpServer
+http.createServer(app).listen(PORT, (error) => {
+    if(error) {
+        console.log('App failed to start', error);
+    } else {
+        console.log(`App is listening port ${PORT}`);
+    }
 });
 
-const URL = "http://127.0.0.1:8000";
+
+const URL = "http://127.0.0.1:5000";
 
 // serve post request
 app.post('/query', async (req, res) => {
