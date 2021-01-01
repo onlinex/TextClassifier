@@ -13,6 +13,10 @@ from tensorflow.keras.models import load_model
 #
 from scipy.sparse import csr_matrix
 
+# get path
+def get_path(path):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
+
 # load embeddings
 def load_vectorizer(path):
     with open(path, 'rb') as file:
@@ -20,10 +24,11 @@ def load_vectorizer(path):
 
 class Model:
     def __init__(self):
-        self.veczr = load_vectorizer('./data/vectorizer.pkl')
-        self.model = load_model('./data/nn.h5')
+
+        self.veczr = load_vectorizer(get_path('../data/vectorizer.pkl'))
+        self.model = load_model(get_path('../data/nn.h5'))
         #
-        self.authors = pd.read_csv('./data/Authors.csv', index_col='ID')
+        self.authors = pd.read_csv(get_path('../data/Authors.csv'), index_col='ID')
 
     # convert text to sparse matrices
     def vectorize(self, arr: list):

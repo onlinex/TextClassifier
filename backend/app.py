@@ -1,8 +1,14 @@
 from flask import Flask, request, make_response, jsonify
+import logging
+import os
+
 from model import transformer
 
 # define Flask backend
 app = Flask(__name__)
+
+logging.basicConfig(filename=transformer.get_path('../log.txt'), level=logging.DEBUG,\
+    format='%(asctime)s %(levelname)s : %(message)s')
 
 model = transformer.Model()
 
