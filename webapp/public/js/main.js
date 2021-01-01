@@ -2,8 +2,9 @@ let AnimHandler = class {
     constructor() {
         this.book = $('#loading_animation');
         this.info = $('#author_info');
-        //this.book.fadeOut(0); // fadout by default
-        this.info.fadeOut(0);
+        //this.info.fadeOut(0);
+        this.info.fadeTo('slow', 0);
+
         this.timeBlock = NaN;
     }
 
@@ -11,17 +12,26 @@ let AnimHandler = class {
         // clear fadeout
         clearTimeout(this.timeBlock);
         //
-        this.info.fadeOut(85).next().delay(85);
-        
-        this.book.fadeIn(50);
+
+        this.info.fadeTo(85, 0).next().delay(85);
+
+        this.book.fadeTo(50, 1);
+
+
+        //this.info.fadeOut(85).next().delay(85);
+        //this.book.fadeIn(50);
     }
 
     fadeOut() {
         // timeout can be reverted by fadeIN
         this.timeBlock = setTimeout(() => {
-            this.book.fadeOut(120, () => {
-                this.info.fadeIn(50);
+            this.book.fadeTo(120, 0, () => {
+                this.info.fadeTo(50, 1);
             });
+
+            //this.book.fadeOut(120, () => {
+            //    this.info.fadeIn(50);
+            //});
         }, 800)
     }
 }
