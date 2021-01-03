@@ -58,11 +58,7 @@ app.post('/query', async (req, res) => {
         // form request to the model
         axios.post(URL, json).then(response => {
             // send response back to the client
-            res.status(200).send({
-                "name": response.data['name'],
-                "confidence": response.data['confidence'],
-                "img_src": response.data['img_src']
-            });
+            res.status(200).send(response.data);
         }).catch(error => {
             res.status(503).send(error);
         });

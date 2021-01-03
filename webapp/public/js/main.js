@@ -1,70 +1,42 @@
+window.onload = () => {
+    renderChart(
+        {'Drama': 0.0, 'Novel': 0.0, 'Phylosophy': 0.0}
+    );
+}
+
 let AnimHandler = class {
     constructor() {
         this.book = $('#loading_animation');
         this.info = $('#author_info');
-        //this.info.fadeOut(0);
-        this.info.fadeTo('slow', 0);
 
-        this.timeBlock = NaN;
+        this.info.fadeTo('fast', 0);
+        this.book.fadeTo('fast', 1);
     }
 
     fadeIn() {
-        // clear fadeout
-        clearTimeout(this.timeBlock);
-        //
-
-        this.info.fadeTo(85, 0).next().delay(85);
-
-        this.book.fadeTo(50, 1);
-
-
-        //this.info.fadeOut(85).next().delay(85);
-        //this.book.fadeIn(50);
+        // remove info
+        this.info.stop().fadeTo(85, 0).delay(85);
+        // set book
+        this.book.stop().fadeTo(85, 1);
     }
 
     fadeOut() {
-        // timeout can be reverted by fadeIN
-        this.timeBlock = setTimeout(() => {
-            this.book.fadeTo(120, 0, () => {
-                this.info.fadeTo(50, 1);
-            });
-
-            //this.book.fadeOut(120, () => {
-            //    this.info.fadeIn(50);
-            //});
-        }, 800)
+        // remove book
+        this.book.stop().fadeTo(120, 0).delay(120).queue(() => {
+            // set info   
+            this.info.stop().fadeTo(85, 1);
+        });
     }
 }
 
 animation_handler = new AnimHandler();
 
-let Network = class {
-    constructor() {
-        this.stack = [];
-        // interval requests
-        setInterval(() => {
-            // if requests
-            if(this.stack.length > 0) {
-                // get most recent
-                let json = this.stack.pop();
-                // clear everything else
-                this.stack = [];
-                // make request
-                request(json)
-            }
-        }, 250);
-    }
-
-    add(json) {
-        this.stack.push(json);
-    }
-}
-
-let network = new Network();
 
 $("#text").on("input", function() {
     // get request value
     let text = $("#text").val()
+    // if empty, stop
+    if(text.length == 0) return;
     // convert to json
     let json = JSON.stringify({ 
         text: text
@@ -72,6 +44,21 @@ $("#text").on("input", function() {
     // add to stack
     network.add(json);
 });
+
+
+let Network = class {
+    // damper function, 500 ms
+    add(json) {
+        clearTimeout(this.timeBlock);
+
+        this.timeBlock = setTimeout(() => {
+            request(json)
+        }, 700)
+    }
+}
+
+let network = new Network();
+
 
 function request(data) {
     animation_handler.fadeIn();
@@ -91,23 +78,21 @@ function request(data) {
             throw new Error(response.status, response.statusText);
         }
     }).then(json => {
-        console.log(json) // debug information
+        //console.log(json) // debug information
         // set author's name
         $("#response").text(json['name']);
         // set confidence level
         setTimeout(() => {
-            setNumbers(parseFloat(json['confidence']) * 100)
-        }, 800)
+            setNumbers(parseFloat(json['confidence']) * 100);
+            renderChart(json['style'])
+        }, 85)
         // set image
         $("#thumbnail").attr("src", json['img_src']);
-
 
     }).catch(error => {
         console.log(error)
     }).finally(() => {
-        // fade unless there is nothing to print
-        if(JSON.parse(data)['text'] !== '') {
-            animation_handler.fadeOut();
-        }
+        // fade if there is nothing to print
+        animation_handler.fadeOut();
     });
 }

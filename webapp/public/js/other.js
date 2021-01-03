@@ -2,7 +2,7 @@
 particlesJS("particles-js", {
     "particles": {
       "number": {
-        "value": 100,
+        "value": 80,
         "density": {
           "enable": false,
           "value_area": 700 } },
@@ -127,4 +127,53 @@ function setNumbers(val) {
         }
         });
     });
+}
+
+///////////////////////////////////////
+
+/* zingchart.min.js */
+
+function setChartConfig(val) {
+
+  keys = Object.keys(val);
+  values = Object.values(val).map(element => parseInt(element * 100, 10));
+  len = keys.length;
+
+  return {
+    type: 'radar',
+    plot: {
+      aspect: 'area',
+      animation: {
+        effect: 3,
+        sequence: 1,
+        speed: 700
+      }
+    },
+    scaleV: {
+      values: "0:100:1", // Set min/max/step.
+      visible: false
+    },
+    scaleK: {
+      values: '0:'+String(len-1)+':1', // from - to - step
+      labels: keys,
+      guide: {
+        alpha: 0.3,
+        backgroundColor: "#c5c5c5 #718eb4"
+      }
+    },
+    series: [
+      {
+        values: values
+      }
+    ]
+  };
+}
+
+function renderChart(val) {
+  zingchart.render({
+    id: 'myChart',
+    data: setChartConfig(val),
+    height: '100%',
+    width: '100%'
+  });
 }
