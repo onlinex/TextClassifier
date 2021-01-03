@@ -171,7 +171,7 @@ function setChartConfig(val) {
 
 function renderChart(val) {
   zingchart.render({
-    id: 'myChart',
+    id: 'RadarChart',
     data: setChartConfig(val),
     height: '100%',
     width: '100%'
