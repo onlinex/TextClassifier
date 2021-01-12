@@ -129,7 +129,7 @@ canvas {
     margin: 72px 0 0 0;*/
     position: absolute;
     top: calc(50% + 22px);
-    zoom: 1.0;
+    zoom: 0.95;
   }
   .book .inner {
     width: 100%;
@@ -139,6 +139,9 @@ canvas {
     transform: rotateZ(-90deg);
     -webkit-animation: book var(--duration) ease infinite;
             animation: book var(--duration) ease infinite;
+
+    -webkit-animation-play-state: inherit;
+            animation-play-state: inherit;
   }
   .book .inner .left,
   .book .inner .right {
@@ -166,6 +169,8 @@ canvas {
     transform: rotateZ(90deg);
     -webkit-animation: left var(--duration) ease infinite;
             animation: left var(--duration) ease infinite;
+    -webkit-animation-play-state: inherit;
+            animation-play-state: inherit;
   }
   .book .inner .right {
     left: 28px;
@@ -173,6 +178,8 @@ canvas {
     transform: rotateZ(-90deg);
     -webkit-animation: right var(--duration) ease infinite;
             animation: right var(--duration) ease infinite;
+    -webkit-animation-play-state: inherit;
+            animation-play-state: inherit;
   }
   .book .inner .middle {
     width: 32px;
@@ -202,10 +209,12 @@ canvas {
     transform: rotateZ(0deg) translateX(-18px);
     -webkit-animation-duration: var(--duration);
             animation-duration: var(--duration);
-    -webkit-animation-timing-function: ease;
-            animation-timing-function: ease;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
     -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
+    -webkit-animation-play-state: inherit;
+            animation-play-state: inherit;
   }
   .book ul li:nth-child(0) {
     -webkit-animation-name: page-0;
@@ -704,7 +713,7 @@ canvas {
     }
   }
   @-webkit-keyframes left {
-    4% {
+    2% {
       transform: rotateZ(90deg);
     }
     10%, 40% {
@@ -716,12 +725,12 @@ canvas {
     60%, 90% {
       transform: rotateZ(0deg);
     }
-    96% {
+    98% {
       transform: rotateZ(90deg);
     }
   }
   @keyframes left {
-    4% {
+    2% {
       transform: rotateZ(90deg);
     }
     10%, 40% {
@@ -733,12 +742,12 @@ canvas {
     60%, 90% {
       transform: rotateZ(0deg);
     }
-    96% {
+    98% {
       transform: rotateZ(90deg);
     }
   }
   @-webkit-keyframes right {
-    4% {
+    2% {
       transform: rotateZ(-90deg);
     }
     10%, 40% {
@@ -750,12 +759,12 @@ canvas {
     60%, 90% {
       transform: rotateZ(0deg);
     }
-    96% {
+    98% {
       transform: rotateZ(-90deg);
     }
   }
   @keyframes right {
-    4% {
+    2% {
       transform: rotateZ(-90deg);
     }
     10%, 40% {
@@ -767,12 +776,12 @@ canvas {
     60%, 90% {
       transform: rotateZ(0deg);
     }
-    96% {
+    98% {
       transform: rotateZ(-90deg);
     }
   }
   @-webkit-keyframes book {
-    4% {
+    2% {
       transform: rotateZ(-90deg);
     }
     10%, 40% {
@@ -789,12 +798,12 @@ canvas {
       transform: rotateZ(0deg);
       transform-origin: 2px 2px;
     }
-    96% {
+    98% {
       transform: rotateZ(-90deg);
     }
   }
   @keyframes book {
-    4% {
+    2% {
       transform: rotateZ(-90deg);
     }
     10%, 40% {
@@ -811,7 +820,7 @@ canvas {
       transform: rotateZ(0deg);
       transform-origin: 2px 2px;
     }
-    96% {
+    98% {
       transform: rotateZ(-90deg);
     }
   }

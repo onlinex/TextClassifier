@@ -4,8 +4,9 @@ window.onload = () => {
 
 
     renderGenreChart(Object.assign({}, ...genres.map(x => ({[x]: 0.0}))));
-
     renderPeriodChart(Object.assign({}, ...periods.map(x => ({[x]: 0.0}))));
+
+    animation_handler.bookAnim(true);
 }
 
 let AnimHandler = class {
@@ -13,23 +14,32 @@ let AnimHandler = class {
         this.book = $('#loading_animation');
         this.info = $('#author_info');
 
-        this.info.fadeTo('fast', 0);
-        this.book.fadeTo('fast', 1);
+        this.info.fadeTo(0, 0);
+        this.book.fadeTo(0, 1);
+
+        this.bookAnim(false);
     }
 
     fadeIn() {
         // remove info
-        this.info.stop().fadeTo(85, 0).delay(85);
+        this.info.stop().fadeTo(100, 0).delay(100);
         // set book
-        this.book.stop().fadeTo(85, 1);
+        this.book.stop().fadeTo(100, 1);
     }
 
     fadeOut() {
         // remove book
         this.book.stop().fadeTo(120, 0).delay(120).queue(() => {
             // set info   
-            this.info.stop().fadeTo(85, 1);
+            this.info.stop().fadeTo(100, 1);
         });
+    }
+
+    bookAnim(flag=true) {
+        let state = (flag ? 'running' : 'paused');
+
+        this.book.children().children().css('-webkit-animation-play-state', state);
+        this.book.children().children().css('-animation-play-state', state);
     }
 }
 
@@ -72,8 +82,6 @@ let network = new Network();
 
 
 function request(data) {
-    console.log(data)
-
     animation_handler.fadeIn();
     // fetch request
     fetch("/query", {
@@ -104,11 +112,14 @@ function request(data) {
         // set image
         $("#thumbnail").attr("src", json['img_src']);
 
-        // End animation if there is no error
-        animation_handler.fadeOut();
     }).catch(error => {
         console.log(error)
     }).finally(() => {
         //
     });
 }
+
+document.getElementById('thumbnail').addEventListener('load', () => {
+    // end animation when the picture is loaded
+    animation_handler.fadeOut();
+})
