@@ -1,6 +1,6 @@
 # Logs
 webapp/access.log
-backend/log.txt
+backend/service.log
 
 # Optional npm cache directory
 webapp/.npm
