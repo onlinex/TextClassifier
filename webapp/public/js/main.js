@@ -1,7 +1,11 @@
 window.onload = () => {
-    renderChart(
-        {'Drama': 0.0, 'Novel': 0.0, 'Phylosophy': 0.0}
-    );
+    genres = ['Adventure', 'Crime', 'Fantasy', 'Fiction', 'Novel', 'Satire', 'Science']
+    periods = ['Unknown', 'Renaissance', 'Enlightenment', 'Victorian', 'Modernism', 'Post-modernism']
+
+
+    renderGenreChart(Object.assign({}, ...genres.map(x => ({[x]: 0.0}))));
+
+    renderPeriodChart(Object.assign({}, ...periods.map(x => ({[x]: 0.0}))));
 }
 
 let AnimHandler = class {
@@ -36,7 +40,10 @@ $("#text").on("input", function() {
     // get request value
     let text = $("#text").val()
     // if empty, stop
-    if(text.length == 0) return;
+    if(text.length == 0) {
+        network.clear();
+        return
+    };
     // convert to json
     let json = JSON.stringify({ 
         text: text
@@ -55,12 +62,18 @@ let Network = class {
             request(json)
         }, 700)
     }
+
+    clear() {
+        clearTimeout(this.timeBlock);
+    }
 }
 
 let network = new Network();
 
 
 function request(data) {
+    console.log(data)
+
     animation_handler.fadeIn();
     // fetch request
     fetch("/query", {
@@ -79,20 +92,23 @@ function request(data) {
         }
     }).then(json => {
         //console.log(json) // debug information
+        
         // set author's name
         $("#response").text(json['name']);
         // set confidence level
         setTimeout(() => {
             setNumbers(parseFloat(json['confidence']) * 100);
-            renderChart(json['style'])
+            renderGenreChart(json['genres']);
+            renderPeriodChart(json['periods']);
         }, 85)
         // set image
         $("#thumbnail").attr("src", json['img_src']);
 
+        // End animation if there is no error
+        animation_handler.fadeOut();
     }).catch(error => {
         console.log(error)
     }).finally(() => {
-        // fade if there is nothing to print
-        animation_handler.fadeOut();
+        //
     });
 }

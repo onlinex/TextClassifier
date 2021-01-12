@@ -2,7 +2,7 @@ from flask import Flask, request, make_response, jsonify
 import logging
 import os
 
-from model import transformer
+from modules import transformer
 
 # define Flask backend
 app = Flask(__name__)
@@ -18,14 +18,13 @@ def x():
     json = request.get_json()
 
     # run
-    author, confidence, img, style = model.run(json['text'])
+    author, confidence, img, genres, periods = model.run(json['text'])
 
     # form json response
     return make_response(jsonify({
-        "name": str(author),
-        "confidence": str(confidence),
-        "img_src": str(img),
-        "style": style
+        'name': str(author), 'confidence': str(confidence), 'img_src': str(img),
+        'genres': genres,
+        'periods': periods
     }), 200)
 
 if __name__ == '__main__':

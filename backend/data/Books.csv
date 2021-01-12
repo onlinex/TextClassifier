@@ -1,42 +1,72 @@
-ID,Title,AuthorID,Identifier
-0,Hamlet,0,hamletshakespear00bear
-1,Romeo and Juliet,0,shakespearesrome00shak
-2,Macbeth,0,macbeth08shak
-3,The Old Man and the Sea,1,TheOldManAndTheSea-Eng-Ernest
-4,A Farewell to Arms,1,in.ernet.dli.2015.209262
-5,The Sun Also Rises,1,sun_also_rises
-6,A Christmas Carol,2,in.ernet.dli.2015.12721
-7,Oliver Twist,2,in.ernet.dli.2015.220186
-8,David Copperfield,2,in.ernet.dli.2015.182115
-9,Adventures of Huckleberry Finn,3,adventuresofhuck00mark_0
-10,The Adventures Of Tom Sawyer,3,in.ernet.dli.2015.235650
-11,A Connecticut Yankee in King Arthur's Court,3,connecticutyanke1889twai
-12,Fantastic Beasts and Where to Find Them,4,fantastic-beasts-and-where-to-find-them
-13,Harry Potter and the Philosopher's Stone,4,joannek.rowlingharrypotterbook1harrypotterandthephilosophersstoneenglishonlineclub.com_201912
-14,Harry Potter and the Goblet of Fire,4,harrypotter4rowlingjoannekathleenharrypotterandthegobletoffire
-15,Murder on the Orient Express,5,MurderOnTheOrientExpress_201803
-16,The Mysterious Affair at Styles,5,the-mysterious-affair-at-styles-1920
-17,The Murder of Roger Ackroyd,5,the-murder-of-roger-ackroyd-1926
-18,1984,6,1984GeorgeOrwell_201810
-19,Animal Farm,6,AnimalFarm-English-GeorgeOrwell
-20,Homage to Catalonia,6,HomageToCatalonia-English-GeorgeOrwell
-21,Foundation's Edge,7,FoundationsEdgeIsaacAsimov
-22,"I, Robot",7,irobotnovel
-23,Foundation,7,AsimovTheFoundation_201705
-24,Discourse on Method,8,in.ernet.dli.2015.1762
-25,Meditations on First Philosophy,8,RMCG0002
-26,in.ernet.dli.2015.76521,9,in.ernet.dli.2015.76521
-27,The Theory of Moral Sentiments,9,dli.bengal.10689.4837
-28,Essays on Philosophical Subjects,9,essaysonphiloso00stewgoog
-29,Das Kapital,10,in.ernet.dli.2015.124455
-30,The Communist Manifesto,10,in.ernet.dli.2015.59004
-31,The German Ideology,10,germanideologymarxengels
-32,The Castle,11,in.ernet.dli.2015.149543
-33,Slaughterhouse-Five,12,slaughterhousefiveorthechildrenscrusade_202003
-34,Mrs Dalloway,13,in.ernet.dli.2015.509292
-35,A Room of One's Own,13,woolf_aroom
-36,To the Lighthouse,13,in.ernet.dli.2015.176580
-37,The Waves,13,in.ernet.dli.2015.2478
-38,The Sound and the Fury,14,in.ernet.dli.2015.182980
-39,As I Lay Dying,14,in.ernet.dli.2015.150131
-40,A Rose for Emily,14,ARoseForEmily1930
+ID,Title,AuthorID,Identifier,Genre,Year
+0,Hamlet,0,in.ernet.dli.2015.261199,"Tragedy, Drama",1601
+1,Romeo and Juliet,0,shakespearesrome00shak,"Tragedy, Romance",1597
+2,Macbeth,0,macbeth08shak,Tragedy,1606
+3,The Old Man and the Sea,1,TheOldManAndTheSea-Eng-Ernest,"Novel, Allegory, Fiction",1951
+4,A Farewell to Arms,1,in.ernet.dli.2015.209262,"Novel, Fiction, Literary Realism, War story",1929
+5,The Sun Also Rises,1,sun_also_rises,"Novel, Fiction, Roman a clef",1926
+6,A Christmas Carol,2,in.ernet.dli.2015.12721,"Fiction, Fairy tale, Fiction, Victorian literature, Morality play, Ghost story",1843
+7,Oliver Twist,2,in.ernet.dli.2015.220186,"Novel, Fiction, Social novel",1938
+8,David Copperfield,2,in.ernet.dli.2015.182115,"Novel, Bildungsroman, Kunstlerroman, Fictional Autobiography",1950
+9,Adventures of Huckleberry Finn,3,adventuresofhuck00mark_0,"Novel, Satire, Humour, Picaresque novel, Adventure fiction, Robinsonade",1884
+10,The Adventures Of Tom Sawyer,3,in.ernet.dli.2015.235650,"Bildungsroman, Picaresque novel, Satire, Folklore",1876
+11,A Connecticut Yankee in King Arthur's Court,3,connecticutyanke1889twai,"Humour, Novel, Satire, Science fiction, Alternate history, Fantasy fiction, Time travel fiction",1889
+12,Fantastic Beasts and Where to Find Them,4,fantastic-beasts-and-where-to-find-them,"Fantasy, Adventure",2001
+13,Harry Potter and the Philosopher's Stone,4,joannek.rowlingharrypotterbook1harrypotterandthephilosophersstoneenglishonlineclub.com_201912,"Novel, Fantasy fiction, High fantasy",1997
+14,Harry Potter and the Goblet of Fire,4,harrypotter4rowlingjoannekathleenharrypotterandthegobletoffire,"Fantasy, Adventure, Thriller, Mystery",2000
+15,Murder on the Orient Express,5,MurderOnTheOrientExpress_201803,"Novel, Mystery, Detective Novel, Crime novel, Crime Fiction",1934
+16,The Mysterious Affair at Styles,5,the-mysterious-affair-at-styles-1920,"Novel, Mystery, Crime nove, Reference work, Adventure fiction, Crime Fiction",1920
+17,The Murder of Roger Ackroyd,5,the-murder-of-roger-ackroyd-1926,"Mystery, Detective novel, Crime fiction",1926
+18,1984,6,1984GeorgeOrwell_201810,"Political fiction, Social science fiction, Utopian and dystopian fiction",1949
+19,Animal Farm,6,AnimalFarm-English-GeorgeOrwell,"Allegory, Novel, Satire, Fable, Political satire, Roman a clef,  Dystopian fiction",1945
+20,Homage to Catalonia,6,HomageToCatalonia-English-GeorgeOrwell,"Fiction, Biography",1938
+21,Foundation's Edge,7,FoundationsEdgeIsaacAsimov,"Novel, Science fiction",1982
+22,"I, Robot",7,irobotnovel,"Novel, Short story, Science fiction, Fantasy fiction",1950
+23,Foundation,7,AsimovTheFoundation_201705,"Novel, Science fiction",1942
+24,Discourse on Method,8,in.ernet.dli.2015.1762,Treatise,1637
+25,Meditations on First Philosophy,8,RMCG0002,Treatise,1641
+26,The Wealth Of Nations,9,in.ernet.dli.2015.76521,"Reference work, Phylosophy, Economics",1776
+27,The Theory of Moral Sentiments,9,dli.bengal.10689.4837,Phylosophy,1759
+28,Essays on Philosophical Subjects,9,essaysonphiloso00stewgoog,Phylosophy,1795
+29,Das Kapital,10,in.ernet.dli.2015.124455,"Treatise, Economics, Critique",1867
+30,The Communist Manifesto,10,in.ernet.dli.2015.59004,"Non-fiction, Political document",1848
+31,The German Ideology,10,germanideologymarxengels,History,1932
+32,The Castle,11,in.ernet.dli.2015.149543,"Novel, Comedy, Philosophical fiction, Absurdist fiction, Political fiction, Dystopian Fiction",1926
+33,Slaughterhouse-Five,12,slaughterhousefiveorthechildrenscrusade_202003,"Novel, Satire, Science fiction, Metafiction, Dark comedy, Historical Fiction, Time Travel Fiction, War story",1969
+34,Mrs Dalloway,13,in.ernet.dli.2015.509292,"Novel, Psychological Fiction",1925
+35,A Room of One's Own,13,woolf_aroom,"Essay, Fiction, Non-fiction",1929
+36,To the Lighthouse,13,in.ernet.dli.2015.176580,"Novel, Fiction",1927
+37,The Waves,13,in.ernet.dli.2015.2478,Novel,1931
+38,The Sound and the Fury,14,in.ernet.dli.2015.182980,"Modern literature, Southern gothic, Gothic fiction, Novel",1929
+39,As I Lay Dying,14,in.ernet.dli.2015.150131,"Modern literature, Dark comedy, Southern gothic",1930
+40,A Rose for Emily,14,ARoseForEmily1930,Southern Gothic,1930
+41,Moby Dick,15,in.ernet.dli.2015.260880,"Novel, Adventure fiction, Nautical fiction, Epic",1851
+42,Billy Budd,15,in.ernet.dli.2015.124408,"Novel,  Adventure fiction, Nautical fiction",1924
+43,Omoo,15,omooanarrativea03melvgoog,"Novel, Travel literature, Adventure fiction, Fictional Autobiography",1847
+44,To Have and Have Not,1,in.ernet.dli.2015.274537,"Adventure fiction, Fiction",1937
+45,Othello,0,in.ernet.dli.2015.207089,"Tragedy, Play, Essay",1603
+46,Bleak House,2,bleakhouse00dickgoog,"Novel, Romance, Satire, Detective fiction, Melodrama",1852
+47,Hard Times,2,hardtimes01dickgoog,"Novel, Social criticism, Fiction, Industrial novel",1854
+48,The Old Curiosity Shop,2,oldcuriositysho01dickgoog,"Novel, Fiction, Social criticism",1840
+49,Little Dorrit,2,littledorritdickrich,"Novel, Fiction, Social criticism",1857
+50,Life on the Mississippi,3,lifeonmississipp0000twai_u8x4,Biography,1883
+51,The Innocents Abroad,3,innocentsabroad01twai,"Non-fiction, Travel literature",1869
+52,Roughing It,3,roughingit02twai,"Biography, Travel literature",1872
+53,The Mysterious Stranger,3,mysteriousstrang1922twai,"Novel, Fiction",1908
+54,Death on the Nile,5,deathonnile01chri,"Novel, Crime novel, Mystery, Crime fiction",1937
+55,The Secret Adversary,5,secretadversary00chrigoog,"Mystery, Crime novel, Detective novel, Crime fiction",1922
+56,Down and Out in Paris and London,6,in.ernet.dli.2015.208078,"Biography, Autobiography, Memoir, Fiction autobiography",1933
+57,The Road to Wigan Pier,6,roadtowiganpie00orwe,"Fiction, Autobiography",1936
+58,Keep the Aspidistra Flying,6,dli.ernet.475736,"Novel, Fiction, Social criticism",1936
+59,Coming Up for Air,6,in.ernet.dli.2015.449116,"Humour, Fiction, Satire",1939
+60,The Naked Sun,7,dli.ernet.524928,"Novel, Science fiction, Mystery",1956
+61,The Call of the Wild,16,callofthewild00londrich,"Novel, Adventure fiction, Political procedural",1903
+62,White Fang,16,whitefang00londgoog,"Novel, Adventure fiction",1906
+63,Martin Eden,16,martineden1908lond,"Novel, Fiction, Kunstlerroman",1909
+64,The Sea Wolf,16,seawolf02londgoog,"Adventure fiction, Psychological fiction",1904
+65,The Iron Heel,16,cu31924002168817,"Novel, Fantasy fiction, Dystopian fiction",1907
+66,The Star Rover,16,starrover01londgoog,"Novel, Horror fiction, Fantasy fiction",1915
+67,The Voyage Out,13,voyageout00woolgoog,"Novel, Fiction, Reference work",1915
+68,Night And Day,13,nightday00wool,"Novel, Fiction, Romance novel, Reference work",1919
+69,Three Guineas,13,dli.ernet.475785,"Novel, Non-fiction, Essay",1938
+70,The Years,13,dli.ernet.531386,"Novel, Fiction",1937

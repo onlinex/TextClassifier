@@ -169,9 +169,18 @@ function setChartConfig(val) {
   };
 }
 
-function renderChart(val) {
+function renderGenreChart(val) {
   zingchart.render({
-    id: 'RadarChart',
+    id: 'RadarChart1',
+    data: setChartConfig(val),
+    height: '100%',
+    width: '100%'
+  });
+}
+
+function renderPeriodChart(val) {
+  zingchart.render({
+    id: 'RadarChart2',
     data: setChartConfig(val),
     height: '100%',
     width: '100%'
