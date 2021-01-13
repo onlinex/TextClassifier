@@ -148,7 +148,7 @@ function setChartConfig(val, title) {
       text: title,
       width: 100,
       color: '#fff',
-      'background-color': "#003246",
+      'background-color': "#003046",
       'font-size': 11,
       'border-radius': 4,
       'text-align': 'center',
