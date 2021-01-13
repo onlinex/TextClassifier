@@ -6,7 +6,10 @@ window.onload = () => {
     renderGenreChart(Object.assign({}, ...genres.map(x => ({[x]: 0.0}))));
     renderPeriodChart(Object.assign({}, ...periods.map(x => ({[x]: 0.0}))));
 
-    animation_handler.bookAnim(true);
+    // activate the book
+    setTimeout(() => {
+        animation_handler.bookAnim(true);
+    }, 500);
 }
 
 let AnimHandler = class {
@@ -99,8 +102,8 @@ function request(data) {
             throw new Error(response.status, response.statusText);
         }
     }).then(json => {
-        //console.log(json) // debug information
-        
+        // debug information
+        // console.log(json)
         // set author's name
         $("#response").text(json['name']);
         // set confidence level

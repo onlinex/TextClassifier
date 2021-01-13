@@ -133,7 +133,7 @@ function setNumbers(val) {
 
 /* zingchart.min.js */
 
-function setChartConfig(val) {
+function setChartConfig(val, title) {
 
   keys = Object.keys(val);
   values = Object.values(val).map(element => parseInt(element * 100, 10));
@@ -141,6 +141,20 @@ function setChartConfig(val) {
 
   return {
     type: 'radar',
+    plotarea: {
+      margin: "10px 0px 0px 0px" // top right bottom left
+    },
+    source: {
+      text: title,
+      width: 100,
+      color: '#fff',
+      'background-color': "#003246",
+      'font-size': 11,
+      'border-radius': 4,
+      'text-align': 'center',
+      'offset-x': -10,
+      'font-family': 'Arial'
+    },
     plot: {
       aspect: 'area',
       animation: {
@@ -165,14 +179,19 @@ function setChartConfig(val) {
       {
         values: values
       }
-    ]
+    ],
+    gui : {
+      contextMenu : {
+        empty : true
+      }
+    }
   };
 }
 
 function renderGenreChart(val) {
   zingchart.render({
     id: 'RadarChart1',
-    data: setChartConfig(val),
+    data: setChartConfig(val, 'Genre'),
     height: '100%',
     width: '100%'
   });
@@ -181,7 +200,7 @@ function renderGenreChart(val) {
 function renderPeriodChart(val) {
   zingchart.render({
     id: 'RadarChart2',
-    data: setChartConfig(val),
+    data: setChartConfig(val, 'Time period'),
     height: '100%',
     width: '100%'
   });

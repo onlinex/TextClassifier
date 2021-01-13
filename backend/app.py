@@ -6,6 +6,8 @@ from modules import transformer
 
 # define Flask backend
 app = Flask(__name__)
+# do not sort keys in jsonify
+app.config['JSON_SORT_KEYS'] = False
 
 logging.basicConfig(filename=transformer.get_path('../service.log'), level=logging.DEBUG,\
     format='%(asctime)s %(levelname)s : %(message)s')

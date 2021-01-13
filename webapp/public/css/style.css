@@ -137,8 +137,8 @@ canvas {
     position: relative;
     transform-origin: 2px 2px;
     transform: rotateZ(-90deg);
-    -webkit-animation: book var(--duration) ease infinite;
-            animation: book var(--duration) ease infinite;
+    -webkit-animation: book var(--duration) linear infinite;
+            animation: book var(--duration) linear infinite;
 
     -webkit-animation-play-state: inherit;
             animation-play-state: inherit;
@@ -167,8 +167,8 @@ canvas {
     right: 28px;
     transform-origin: 58px 2px;
     transform: rotateZ(90deg);
-    -webkit-animation: left var(--duration) ease infinite;
-            animation: left var(--duration) ease infinite;
+    -webkit-animation: left var(--duration) linear infinite;
+            animation: left var(--duration) linear infinite;
     -webkit-animation-play-state: inherit;
             animation-play-state: inherit;
   }
@@ -176,8 +176,8 @@ canvas {
     left: 28px;
     transform-origin: 2px 2px;
     transform: rotateZ(-90deg);
-    -webkit-animation: right var(--duration) ease infinite;
-            animation: right var(--duration) ease infinite;
+    -webkit-animation: right var(--duration) linear infinite;
+            animation: right var(--duration) linear infinite;
     -webkit-animation-play-state: inherit;
             animation-play-state: inherit;
   }
@@ -209,12 +209,13 @@ canvas {
     transform: rotateZ(0deg) translateX(-18px);
     -webkit-animation-duration: var(--duration);
             animation-duration: var(--duration);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
     -webkit-animation-play-state: inherit;
             animation-play-state: inherit;
+
   }
   .book ul li:nth-child(0) {
     -webkit-animation-name: page-0;
@@ -712,6 +713,8 @@ canvas {
       transform: rotateZ(0deg) translateX(-18px);
     }
   }
+
+
   @-webkit-keyframes left {
     2% {
       transform: rotateZ(90deg);
@@ -746,6 +749,9 @@ canvas {
       transform: rotateZ(90deg);
     }
   }
+  
+
+  
   @-webkit-keyframes right {
     2% {
       transform: rotateZ(-90deg);
@@ -780,6 +786,8 @@ canvas {
       transform: rotateZ(-90deg);
     }
   }
+
+
   @-webkit-keyframes book {
     2% {
       transform: rotateZ(-90deg);
@@ -802,6 +810,8 @@ canvas {
       transform: rotateZ(-90deg);
     }
   }
+  
+  
   @keyframes book {
     2% {
       transform: rotateZ(-90deg);
