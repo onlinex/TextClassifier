@@ -17,6 +17,12 @@ const axios = require('axios');
 const http = require('http');
 const https = require('https');
 
+// SSL/TLS setup
+var private_key = fs.readFileSync('/etc/ssl/notio/private_key.key', 'utf8')
+var certificate = fs.readFileSync('/etc/ssl/notio/certificate.pem', 'utf8');
+
+var credentials = {key: private_key, cert: certificate};
+
 
 // config env variables
 dotenv.config();
@@ -37,13 +43,22 @@ app.use(morgan('common', {
 }));
 
 // get an environment variable
-const PORT = process.env.PORT || 8081;
+const PORT_HTTP = process.env.PORT_HTTP || 8081;
+const PORT_HTTPS = process.env.PORT_HTTPS || 8444;
 // create httpServer
 http.createServer(app).listen(PORT, (error) => {
     if(error) {
         console.log('App failed to start', error);
     } else {
-        console.log(`App is listening port ${PORT}`);
+        console.log(`App is listening port ${PORT_HTTP}`);
+    }
+});
+// create httpsServer
+https.createServer(credentials, app).listen(8444, (error) => {
+    if(error) {
+        console.log('App failed to start', error);
+    } else {
+        console.log(`App is listening port ${PORT_HTTPS}`)
     }
 });
 
