@@ -46,7 +46,7 @@ app.use(morgan('common', {
 const PORT_HTTP = process.env.PORT_HTTP || 8081;
 const PORT_HTTPS = process.env.PORT_HTTPS || 8444;
 // create httpServer
-http.createServer(app).listen(PORT, (error) => {
+http.createServer(app).listen(PORT_HTTP, (error) => {
     if(error) {
         console.log('App failed to start', error);
     } else {
@@ -54,7 +54,7 @@ http.createServer(app).listen(PORT, (error) => {
     }
 });
 // create httpsServer
-https.createServer(credentials, app).listen(8444, (error) => {
+https.createServer(credentials, app).listen(PORT_HTTPS, (error) => {
     if(error) {
         console.log('App failed to start', error);
     } else {
