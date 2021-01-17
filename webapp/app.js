@@ -18,8 +18,8 @@ const http = require('http');
 const https = require('https');
 
 // SSL/TLS setup
-var private_key = fs.readFileSync('/etc/ssl/notio/private_key.key', 'utf8')
-var certificate = fs.readFileSync('/etc/ssl/notio/certificate.pem', 'utf8');
+var private_key = '';//fs.readFileSync('/etc/ssl/notio/private_key.key', 'utf8');
+var certificate = '';//fs.readFileSync('/etc/ssl/notio/certificate.pem', 'utf8');
 
 var credentials = {key: private_key, cert: certificate};
 

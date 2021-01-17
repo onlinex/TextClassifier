@@ -23,6 +23,9 @@ def load_pickle(path):
 class Model:
     def __init__(self):
 
+        # how many tokens are needed for a sentence to be considered complete
+        self.min_num_tokens = 5
+
         # import spacy to use GloVe vectors
         self.nlp = spacy.load("en_core_web_md")
         self.nlp.max_length = 10e8
@@ -46,6 +49,7 @@ class Model:
 
     # convert to vectors
     def vectorize(self, docs, seq_length=35):
+        stop_list = [' ', '/', '^', '{', '}', '$', '*', '®', '•', '&', '\\', '■', '°']
         # generator to list
         docs = list(docs.sents)
         size = len(docs)
@@ -53,17 +57,33 @@ class Model:
         Xs = np.zeros(shape=(size, seq_length, 300), dtype='float32')
         # iterate sentences
         for i, doc in enumerate(docs):
-            for j, token in enumerate(doc[:seq_length]):
+            j = 0
+            for token in doc[:seq_length]:
+                if token.text in stop_list:
+                    continue
                 # get index from int64 hash
                 Xs[i, j] = token.vector if token.has_vector else self.nlp.vocab[0].vector
+                j += 1
+                
         return Xs
 
+    # make prediciton less steep
     def smooth(self, p):
         return p ** 0.5 / (np.max(p ** 0.5) / np.max(p))
 
+    # adjust for number of words
+    def adjustment_coeff(self, v):
+        # number of tokens in each sequence
+        num_tokens = np.sum(~np.equal(v[:, :, 0], 0.0), axis=1)
+        # calculate coefficients
+        coeff = np.min([num_tokens / self.min_num_tokens, np.ones(len(num_tokens))], axis=0)
+        return np.reshape(coeff, (-1,1,1))
+
     def predict_author(self, v):
+        # get coefficient to scale down the predictions
+        adj_coeff = self.adjustment_coeff(v)
         # predict, avg across sentences
-        prediction = np.mean(self.nn_authors.predict(v), axis=0)
+        prediction = np.mean(self.nn_authors.predict(v) * adj_coeff, axis=0)
         
         label, confidence = np.argmax(prediction), np.max(prediction)
         # get data from csv
@@ -86,6 +106,9 @@ class Model:
     def run(self, text: str):
         # vectorize
         vectors = self.vectorize(self.nlp(text))
+        # return None template if input is None
+        if np.sum(vectors) == 0:
+            return self.get_zero_pattern()
         # Author
         author, confidence, img = self.predict_author(vectors)
         # Genre
@@ -94,3 +117,13 @@ class Model:
         periods = self.predict_period(vectors)
 
         return author, confidence, img, genres, periods
+
+    def get_zero_pattern(self):
+        author = 'Author unknown'
+        confidence = 0.0,
+        img = 'http://localhost:8081/img/icon1/icon_bordered.png'
+        genres = dict(zip(self.genres_names, np.zeros(len(self.genres_names)).astype(str)))
+        periods = dict(zip(self.periods_names, np.zeros(len(self.periods_names)).astype(str)))
+
+        return author, confidence, img, genres, periods
+
