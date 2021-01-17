@@ -121,7 +121,7 @@ class Model:
     def get_zero_pattern(self):
         author = 'Author unknown'
         confidence = 0.0,
-        img = 'http://localhost:8081/img/icon1/icon_bordered.png'
+        img = 'http://notio.ink/img/icon1/icon_bordered.png'
         genres = dict(zip(self.genres_names, np.zeros(len(self.genres_names)).astype(str)))
         periods = dict(zip(self.periods_names, np.zeros(len(self.periods_names)).astype(str)))
 
