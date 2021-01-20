@@ -37,6 +37,7 @@ dotenv.config();
 const app = express();
 // trust Nginx proxy
 app.enable("trust proxy");
+app.set('trust proxy',function(){ return true; });
 // define static directory
 app.use(express.static(path.join(__dirname, 'public')));
 // use cors
