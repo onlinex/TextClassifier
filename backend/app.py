@@ -9,8 +9,25 @@ app = Flask(__name__)
 # do not sort keys in jsonify
 app.config['JSON_SORT_KEYS'] = False
 
-logging.basicConfig(filename=transformer.get_path('../service.log'), level=logging.DEBUG,\
+# set up basic config for handling incoming requests
+logging.basicConfig(filename=transformer.get_path('../logs/service.log'), level=logging.DEBUG,\
     format='%(asctime)s %(levelname)s : %(message)s')
+
+
+def setup_logger(name, log_file, level=logging.INFO):
+    """To setup a logger"""
+
+    handler = logging.FileHandler(log_file)        
+    handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
+
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    logger.addHandler(handler)
+
+    return logger
+
+# second file logger
+info_logger = setup_logger('info_logger', transformer.get_path('../logs/info.log'))
 
 model = transformer.Model()
 
@@ -21,6 +38,8 @@ def x():
 
     # run
     author, confidence, img, genres, periods = model.run(json['text'])
+    # log request
+    info_logger.info('{} | {}, {} -> {}'.format(request.remote_addr, author, confidence, json['text']))
 
     # form json response
     return make_response(jsonify({
