@@ -35,6 +35,8 @@ dotenv.config();
 
 // define framwork
 const app = express();
+// trust Nginx proxy
+app.enable("trust proxy");
 // define static directory
 app.use(express.static(path.join(__dirname, 'public')));
 // use cors

@@ -39,7 +39,7 @@ def x():
     # run
     author, confidence, img, genres, periods = model.run(json['text'])
     # log request
-    info_logger.info('{} | {}, {} -> {}'.format(request.remote_addr, author, confidence, json['text']))
+    info_logger.info('{}, {} -> {}'.format(author, confidence, json['text']))
 
     # form json response
     return make_response(jsonify({
