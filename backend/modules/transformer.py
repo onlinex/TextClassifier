@@ -77,14 +77,14 @@ class Model:
         num_tokens = np.sum(~np.equal(v[:, :, 0], 0.0), axis=1)
         # calculate coefficients
         coeff = np.min([num_tokens / self.min_num_tokens, np.ones(len(num_tokens))], axis=0)
-        return np.reshape(coeff, (-1,1,1))
+        return np.reshape(coeff, (-1,1))
 
     def predict_author(self, v):
         # get coefficient to scale down the predictions
         adj_coeff = self.adjustment_coeff(v)
         # predict, avg across sentences
         prediction = np.mean(self.nn_authors.predict(v) * adj_coeff, axis=0)
-        
+
         label, confidence = np.argmax(prediction), np.max(prediction)
         # get data from csv
         name, img = self.authors.loc[label]['Author'], self.authors.loc[label]['Img']
